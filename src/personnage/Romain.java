@@ -3,6 +3,8 @@ package personnage;
 public class Romain {
 	private String nom;
 	private int force;
+	private Equipement[] equipements = new Equipement[2];
+	private int nbEquipement = 0;
 	
 	public Romain(String nom, int force) {
 		this.nom = nom;
@@ -40,9 +42,13 @@ public class Romain {
 	
 	public static void main(String[] args) {
 		Romain minus = new Romain("Minus", 6);
+		Equipement bouclier = Equipement.BOUCLIER;
+		Equipement casque = Equipement.CASQUE;
 		
 		minus.prendreParole();
 		minus.parler("Bonjour ");
 		minus.recevoirCoup(2);
+		
+		System.out.println(bouclier.toString() + " " + casque.toString());
 	}
 }
