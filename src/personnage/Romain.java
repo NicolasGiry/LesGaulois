@@ -9,7 +9,7 @@ public class Romain {
 	public Romain(String nom, int force) {
 		this.nom = nom;
 		this.force = force;
-		assert force > 0 : "la force doit �tre positive";
+		assert force > 0 : "la force doit �tre positive";
 	}
 	
 	public String getNom() {
@@ -29,15 +29,47 @@ public class Romain {
 	}
 	
 	public void recevoirCoup(int forceCoup) {
-		assert force>0 : "pr�condition : force doit �tre positive";
+		assert force>0 : "pr�condition : force doit �tre positive";
 		int forceDepart = force;
 		force -= forceCoup;
 		if (force > 0) {
-		parler("A�e");
+		parler("A�e");
 		} else {
 		parler("J'abandonne...");
 		}
 		assert forceDepart > force : "postcondition : la force doit diminuer";
+	}
+
+	public void sEquiper (Equipement equipement) {
+
+		switch (nbEquipement) {
+			case 2:
+				System.out.println("Le soldat " + nom + " est déjà bien protégé !");
+				break;
+			case 1:
+				if (equipements[0] == equipement) {
+					System.out.println("Le soldat " + nom + " porte déjà un " + equipement.toString());
+					} else {
+						nbEquipement ++;
+						equipements[nbEquipement-1] = equipement;
+						System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement.toString());
+					}
+				break;
+			case 0:
+				nbEquipement ++;
+				equipements[nbEquipement-1] = equipement;
+				System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement.toString());
+				break;
+		}
+
+
+		// if (nbEquipement >= 2) {
+		// 	System.out.println("Le soldat " + nom + " est déjà bien protégé !");
+		// } else if (equipements[0] == equipement) {
+		// 	System.out.println("Le soldat " + nom + " porte déjà un " + equipement.toString());
+		// } else {
+
+		// }
 	}
 	
 	public static void main(String[] args) {
@@ -50,5 +82,10 @@ public class Romain {
 		minus.recevoirCoup(2);
 		
 		System.out.println(bouclier.toString() + " " + casque.toString());
+
+		minus.sEquiper(casque);
+		minus.sEquiper(casque);
+		minus.sEquiper(bouclier);
+		minus.sEquiper(casque);
 	}
 }
