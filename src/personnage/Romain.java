@@ -40,6 +40,12 @@ public class Romain {
 		assert forceDepart > force : "postcondition : la force doit diminuer";
 	}
 
+	private void  ajouterEquipement(Equipement equipement) {
+		equipements[nbEquipement] = equipement;
+		nbEquipement ++;
+		System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement.toString());
+	}
+
 	public void sEquiper (Equipement equipement) {
 
 		switch (nbEquipement) {
@@ -49,17 +55,12 @@ public class Romain {
 			case 1:
 				if (equipements[0] == equipement) {
 					System.out.println("Le soldat " + nom + " porte déjà un " + equipement.toString());
-					} else {
-						nbEquipement ++;
-						equipements[nbEquipement-1] = equipement;
-						System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement.toString());
-					}
+				} else {
+					ajouterEquipement(equipement);
+				}
 				break;
 			case 0:
-				nbEquipement ++;
-				equipements[nbEquipement-1] = equipement;
-				System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement.toString());
-				break;
+				ajouterEquipement(equipement);
 		}
 	}
 	
