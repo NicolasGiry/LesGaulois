@@ -61,15 +61,6 @@ public class Romain {
 				System.out.println("Le soldat " + nom + " s'équipe avec un " + equipement.toString());
 				break;
 		}
-
-
-		// if (nbEquipement >= 2) {
-		// 	System.out.println("Le soldat " + nom + " est déjà bien protégé !");
-		// } else if (equipements[0] == equipement) {
-		// 	System.out.println("Le soldat " + nom + " porte déjà un " + equipement.toString());
-		// } else {
-
-		// }
 	}
 	
 	public static void main(String[] args) {
