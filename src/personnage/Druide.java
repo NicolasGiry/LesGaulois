@@ -1,5 +1,5 @@
 package personnage;
-import java.util.Random;;;
+import java.util.Random;
 
 public class Druide {
 	private String nom;
@@ -47,8 +47,6 @@ public class Druide {
 		} else {
 			gaulois.boirePotion(forcePotion);
 		}
-		
-
 	}
 
 	public static void main(String[] args) {
