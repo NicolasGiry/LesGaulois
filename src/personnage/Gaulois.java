@@ -1,11 +1,12 @@
 package personnage;
+import lieu.Musee;
 
 public class Gaulois {
 	private String nom;
 	private int effetPotion = 1;
 	private int force;
 	private int nbTrophees;
-	private Equipement[] trophees;
+	private Equipement[] trophees = new Equipement[100];
 	
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -38,7 +39,7 @@ public class Gaulois {
 	public void frapper(Romain romain) {
 		System.out.println(nom + " envoie un grand coup dans la machoire de " + romain.getNom());
 		Equipement[] tropheesTemp = romain.recevoirCoup((force / 3) * effetPotion);
-		for (int i = 0; tropheesTemp != null && i <= tropheesTemp.length; i++, nbTrophees++) {
+		for (int i = 0; tropheesTemp != null && i < tropheesTemp.length; i++, nbTrophees++) {
 			this.trophees[nbTrophees] = tropheesTemp[i];
 		}
 	}
@@ -46,6 +47,10 @@ public class Gaulois {
 	public void boirePotion(int forcePotion) {
 		effetPotion = forcePotion;
 		parler("Merci Druide, je sens que ma force est " + forcePotion + " fois decuple.");
+	}
+	
+	public void faireUneDonation(Musee musee) {
+		musee.donnerTrophees(this, trophees);
 	}
 	
 	@Override

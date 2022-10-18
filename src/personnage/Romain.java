@@ -46,11 +46,14 @@ public class Romain {
 		assert force > 0;
 		int oldForce = force;
 		forceCoup = calculResistanceEquipement(forceCoup);
-		if (forceCoup > 0) {
-			force -= forceCoup;
-		} else {
-			force += forceCoup;
-		}
+//		if (forceCoup > 0) {
+//			force -= forceCoup;
+//		} else {
+//			force += forceCoup;
+//		}
+		
+		force -= forceCoup;
+		
 		if (force > 0) {
 				parler("Aie");
 		} else {
@@ -68,17 +71,24 @@ public class Romain {
 		if (nbEquipement != 0) {
 			texte += "\nMais heureusement, grace a mon equipement sa force est diminue de ";
 			for (int i = 0; i < nbEquipement; i++) {
-				if ((equipements[i] != null && equipements[i].equals(Equipement.BOUCLIER))) {
-					resistanceEquipement += 8;
-				} else {
-					System.out.println("Equipement casque");
+				if (equipements[i] != null) {
+					if (equipements[i].equals(Equipement.BOUCLIER)) {
+						resistanceEquipement += 8;
+					} else {
+					// System.out.println("Equipement casque");
 					resistanceEquipement += 5;
+					}
 				}
 			}
 			texte += resistanceEquipement + "!";
 		}
 		parler(texte);
 		forceCoup -= resistanceEquipement;
+		
+		if ( forceCoup < 0 ) {
+			forceCoup = 0;
+		}
+		
 		return forceCoup;
 	}
 	
