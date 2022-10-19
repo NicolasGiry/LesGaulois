@@ -5,6 +5,7 @@ public class Romain {
 	private Equipement[] equipements = new Equipement[2];
 	private int nbEquipement = 0;
 	private int force;
+	private boolean invulnerable = false;
 	
 	public Romain(String nom, int force) {
 		this.nom = nom;
@@ -18,6 +19,10 @@ public class Romain {
 	
 	public int getForce() {
 		return force;
+	}
+
+	public boolean getInvulnerable() {
+		return invulnerable;
 	}
 	
 	public void parler(String texte) {
@@ -46,19 +51,20 @@ public class Romain {
 		assert force > 0;
 		int oldForce = force;
 		forceCoup = calculResistanceEquipement(forceCoup);
-//		if (forceCoup > 0) {
-//			force -= forceCoup;
-//		} else {
-//			force += forceCoup;
-//		}
-		
-		force -= forceCoup;
-		
-		if (force > 0) {
-				parler("Aie");
+
+		if (forceCoup == 0) {
+			parler("Ah ah ah ! Ton coup ne me fais rien !");
+			invulnerable = true;
 		} else {
-				equipementEjecte = ejecterEquipement();
-				parler("J'abandonne...");
+		
+			force -= forceCoup;
+			
+			if (force > 0) {
+					parler("Aie");
+			} else {
+					equipementEjecte = ejecterEquipement();
+					parler("J'abandonne...");
+			}
 		}
 		// post condition la force a diminue
 		assert force < oldForce;
