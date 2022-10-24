@@ -21,6 +21,15 @@ public class Musee {
 		} else { 
 			System.out.println("Oups, je n'ai pas de trophees...");
 		}
-		
+	}
+
+	public String extraireInstructionsCaml() {
+		String contenuMusee = "";
+
+		for (int i=0; i<trophees.length && trophees[i] != null ; i++) {
+			contenuMusee += "＂" + trophees[i].donnerNom() + "＂, ＂" + trophees[i].getEquipement().toString() + "＂; \n";
+		}
+
+		return "let musee = [ \n" + contenuMusee.substring(0, contenuMusee.length()-3) + "\n]";
 	}
 }

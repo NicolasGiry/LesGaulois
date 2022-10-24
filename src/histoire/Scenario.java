@@ -29,12 +29,14 @@ public class Scenario {
 		} while (minus.getForce() > 0 && !minus.getInvulnerable());
 		milexcus.parler("UN GAU... UN GAUGAU...");
 		do {
-			asterix.frapper(milexcus);
+			obelix.frapper(milexcus);
 		} while (milexcus.getForce() > 0 && !milexcus.getInvulnerable());
 
 		Musee musee = new Musee();
 		asterix.faireUneDonation(musee);
+		obelix.faireUneDonation(musee);
 
+		System.out.println(musee.extraireInstructionsCaml());
 	}
 
 }
